@@ -4,3 +4,8 @@ Un intento de motor o renderizador de píxeles inspirado en [spxe](https://githu
 # Dependencias
 - [GLEW](https://github.com/nigels-com/glew)
 - [GLFW](https://github.com/glfw/glfw)
+
+# Instalación de librerías:
+- libglew-dev
+- libglfw3
+- libglfw3-dev
