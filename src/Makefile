@@ -1,9 +1,9 @@
 CC     = gcc
 CFLAGS = -g -Wall
-LFLAGS = -lglfw3 -lGL -lm -lX11 -lpthread -lXi -lXrandr -ldl
+LFLAGS = -lglfw3 -lGLEW -lGLU -lGL -lm -lX11 -lpthread -lXi -lXrandr -ldl
 IFLAGS = -Iinc/
 
-.PHONY: all clean re
+.PHONY: all clean re run
 
 TGT  = main
 SRCS = main.c pixel.c
@@ -23,3 +23,6 @@ clean:
 	@echo "clean"
 
 re: clean all
+
+run: all
+	./$(TGT)
