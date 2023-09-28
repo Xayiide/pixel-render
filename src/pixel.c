@@ -1,7 +1,6 @@
 #include "pixel.h"
 
 #include <GL/glew.h>
-#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include <stdio.h>  /* printf */
@@ -11,14 +10,17 @@
 static void error_callback(int err, const char *desc);
 static void tecla_callback(GLFWwindow *ventana, int tecla, int scancode,
                            int accion, int mods);
+static void get_version(void);
 
 
 void px_init(int ancho, int alto, const char *titulo)
 {
+    GLFWwindow *ventana;
+    GLuint      vertex_shader, fragment_shader, program;
+
     printf("[px] Inicializando...\n");
 
-    GLFWwindow *ventana;
-
+    get_version();
     glfwSetErrorCallback(error_callback);
 
     if (glfwInit() == GL_FALSE) {
@@ -43,9 +45,19 @@ void px_init(int ancho, int alto, const char *titulo)
         exit(EXIT_FAILURE);
     }
 
+    program = glCreateProgram();
 
 }
 
+static void get_version(void)
+{
+    int        vMajor, vMinor, vRev;
+    const char *vString;
+
+    glfwGetVersion(&vMajor, &vMinor, &vRev);
+
+    printf("[px] Versión: %d.%d.%d.\n", vMajor, vMinor, vRev);
+}
 
 static void error_callback(int err, const char *desc)
 {
@@ -53,7 +65,7 @@ static void error_callback(int err, const char *desc)
 }
 
 
-static void keybd_callback(GLFWwindow *ventana, int tecla, int scancode,
+static void tecla_callback(GLFWwindow *ventana, int tecla, int scancode,
                            int accion, int mods)
 {
     if (tecla == GLFW_KEY_ESCAPE && accion == GLFW_PRESS)

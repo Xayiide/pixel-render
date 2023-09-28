@@ -52,6 +52,10 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
 int main(void)
 {
+    px_init(640, 480, "Triangulito");
+
+
+#if 0
     GLFWwindow* window;
     GLuint      vertex_buffer, vertex_shader, fragment_shader, program;
     GLint       mvp_location, vpos_location, vcol_location;
@@ -137,5 +141,6 @@ int main(void)
     glfwDestroyWindow(window);
 
     glfwTerminate();
+#endif
     exit(EXIT_SUCCESS);
 }
